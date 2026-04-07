@@ -23,8 +23,14 @@
             padding: 10px;
             margin-top: 10px;
         }
-        .btn-enviar {
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
             margin-top: 15px;
+        }
+        .btn-enviar {
             width: 100%;
             max-width: 200px;
             padding: 12px 24px;
@@ -41,6 +47,25 @@
         }
         .btn-enviar:active {
             background-color: #1e40af;
+        }
+        .btn-novo {
+            width: 100%;
+            max-width: 200px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-novo:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+        .btn-novo:active {
+            background-color: #f3f4f6;
         }
         #resultado {
             margin-top: 20px;
@@ -59,7 +84,10 @@
         <input type="text" id="sobrenome" placeholder="Sobrenome">
         <input type="number" id="idade" placeholder="Idade">
 
-        <button type="button" class="btn-enviar" onclick="enviarFormulario()">Enviar</button>
+        <div class="form-actions">
+            <button type="button" class="btn-enviar" onclick="enviarFormulario()">Enviar</button>
+            <button type="button" class="btn-novo" onclick="novoFormulario()">Novo formulário</button>
+        </div>
     </form>
 
     <div id="resultado"></div>
@@ -84,6 +112,12 @@ function enviarFormulario() {
             <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="Erro">
         `;
     }
+}
+
+function novoFormulario() {
+    document.getElementById("formulario").reset();
+    document.getElementById("resultado").innerHTML = "";
+    document.getElementById("nome").focus();
 }
 </script>
 
