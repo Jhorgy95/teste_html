@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .btn-enviar-seta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border: none;
+            border-radius: 50%;
+            background-color: #2563eb;
+            color: #fff;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .btn-enviar-seta:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-enviar-seta:active {
+            background-color: #1e40af;
+        }
+        .btn-enviar-seta svg {
+            display: block;
+        }
+        .btn-novo {
+            width: 100%;
+            max-width: 200px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #374151;
+            background-color: #fff;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .btn-novo:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+        .btn-novo:active {
+            background-color: #f3f4f6;
+        }
+        #resultado {
+            margin-top: 20px;
+        }
+        #resultado img {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Cadastro</h2>
+    <form id="formulario">
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="sobrenome" placeholder="Sobrenome">
+        <input type="number" id="idade" placeholder="Idade">
+
+        <div class="form-actions">
+            <button type="button" class="btn-enviar-seta" data-action="enviar" aria-label="send" onclick="enviarFormulario()" title="send">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14M13 5l7 7-7 7"/>
+                </svg>
+            </button>
+            <button type="button" class="btn-novo" data-action="novo-formulario" onclick="novoFormulario()">Novo formulário</button>
+        </div>
+    </form>
+
+    <div id="resultado"></div>
+</div>
+
+<script>
+function enviarFormulario() {
+    let nome = document.getElementById("nome").value;
+    let sobrenome = document.getElementById("sobrenome").value;
+    let idade = document.getElementById("idade").value;
+    let resultado = document.getElementById("resultado");
+
+    if (nome && sobrenome && idade) {
+        resultado.innerHTML = `
+            <p>Cadastro realizado com sucesso!</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Sucesso">
+        `;
+    } else {
+        resultado.innerHTML = `
+            <p>Preencha todos os dados!</p>
+            <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="Erro">
+        `;
+    }
+}
+
+function novoFormulario() {
+    document.getElementById("formulario").reset();
+    document.getElementById("resultado").innerHTML = "";
+    document.getElementById("nome").focus();
+}
+</script>
+
+</body>
+</html>
