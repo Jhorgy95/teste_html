@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal RPA — Formulário</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="portal" data-page="rpa-form-portal">
+    <header class="portal__header">
+      <h1 class="portal__title">Portal de formulário</h1>
+      <p class="portal__subtitle">Quatro campos para fluxos em loop com automação RPA.</p>
+    </header>
+
+    <form
+      id="rpa-loop-form"
+      class="form"
+      action="#"
+      method="get"
+      autocomplete="on"
+      data-form="rpa-loop"
+      novalidate
+    >
+      <div class="form__group">
+        <label class="form__label" for="rpa-item-1">Cliente</label>
+        <input
+          type="text"
+          id="rpa-item-1"
+          name="item1"
+          class="form__input"
+          placeholder="Ex.: ID da tarefa ou referência"
+          data-rpa-field="item-1"
+          required
+          aria-required="true"
+        >
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="rpa-item-2">CNPJ</label>
+        <input
+          type="text"
+          id="rpa-item-2"
+          name="item2"
+          class="form__input"
+          placeholder="Ex.: valor ou código"
+          data-rpa-field="item-2"
+          required
+          aria-required="true"
+        >
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="rpa-item-3">Valor do Pedido</label>
+        <input
+          type="text"
+          id="rpa-item-3"
+          name="item3"
+          class="form__input"
+          placeholder="Ex.: complemento opcional"
+          data-rpa-field="item-3"
+          required
+          aria-required="true"
+        >
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="rpa-item-4">Observações</label>
+        <textarea
+          id="rpa-item-4"
+          name="item4"
+          class="form__input form__input--textarea"
+          rows="3"
+          placeholder="Texto livre para o robô ou operador"
+          data-rpa-field="item-4"
+          required
+          aria-required="true"
+        ></textarea>
+      </div>
+
+      <div class="form__actions">
+        <button type="submit" id="rpa-submit" class="btn btn--primary" data-rpa-action="submit">
+          Enviar
+        </button>
+        <button type="reset" id="rpa-reset" class="btn btn--ghost" data-rpa-action="reset">
+          Limpar
+        </button>
+      </div>
+      <p id="rpa-form-feedback" class="form__feedback" role="status" aria-live="polite" hidden></p>
+    </form>
+  </main>
+  <script>
+    (function () {
+      var form = document.getElementById('rpa-loop-form');
+      var feedback = document.getElementById('rpa-form-feedback');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var missing = [];
+        form.querySelectorAll('input[required], textarea[required]').forEach(function (el) {
+          if (!el.value.trim()) {
+            var label = form.querySelector('label[for="' + el.id + '"]');
+            missing.push(label ? label.textContent.trim() : el.name);
+          }
+        });
+        if (missing.length) {
+          feedback.className = 'form__feedback form__feedback--error';
+          feedback.textContent =
+            'Preencha os campos obrigatórios: ' + missing.join(', ') + '.';
+          feedback.hidden = false;
+          return;
+        }
+        feedback.className = 'form__feedback form__feedback--success';
+        feedback.textContent = 'Enviado com sucesso.';
+        feedback.hidden = false;
+      });
+      form.addEventListener('reset', function () {
+        feedback.hidden = true;
+        feedback.textContent = '';
+        feedback.className = 'form__feedback';
+      });
+    })();
+  </script>
+</body>
+</html>
