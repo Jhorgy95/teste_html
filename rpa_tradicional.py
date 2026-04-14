@@ -13,7 +13,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("textbox", name="CNPJ").fill("12345678901234")
     page.get_by_role("textbox", name="Observações").fill("Teste de observações")
     time.sleep(10)
-    page.get_by_role("button", name="Enviar").click(timeout=2000)
+    page.get_by_role("button", name="Submeter formulário").click(timeout=2000)
 
     # ---------------------
     context.close()
