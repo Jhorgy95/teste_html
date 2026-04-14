@@ -37,20 +37,6 @@
       </div>
 
       <div class="form__group">
-        <label class="form__label" for="rpa-item-3">Valor do Pedido</label>
-        <input
-          type="text"
-          id="rpa-item-3"
-          name="item3"
-          class="form__input"
-          placeholder="Ex.: complemento opcional"
-          data-rpa-field="item-3"
-          required
-          aria-required="true"
-        >
-      </div>
-
-      <div class="form__group">
         <label class="form__label" for="rpa-item-2">CNPJ</label>
         <input
           type="text"
@@ -59,6 +45,20 @@
           class="form__input"
           placeholder="Ex.: valor ou código"
           data-rpa-field="item-2"
+          required
+          aria-required="true"
+        >
+      </div>
+
+      <div class="form__group">
+        <label class="form__label" for="rpa-item-3">Valor do Pedido</label>
+        <input
+          type="text"
+          id="rpa-item-3"
+          name="item3"
+          class="form__input"
+          placeholder="Ex.: complemento opcional"
+          data-rpa-field="item-3"
           required
           aria-required="true"
         >
@@ -82,13 +82,10 @@
         <button
           type="submit"
           id="rpa-submit"
-          class="btn btn--primary btn--icon-submit"
+          class="btn btn--primary"
           data-rpa-action="submit"
-          aria-label="Submeter formulário"
         >
-          <svg class="btn__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          Enviar
         </button>
         <button type="reset" id="rpa-reset" class="btn btn--ghost" data-rpa-action="reset">
           Limpar

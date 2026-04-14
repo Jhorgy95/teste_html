@@ -144,37 +144,15 @@ body {
 
 .btn--primary {
   color: #fff;
-  background: var(--accent);
-  border-color: var(--accent);
+  background: #ea580c;
+  border-color: #ea580c;
+  box-shadow: 0 2px 12px rgba(234, 88, 12, 0.35);
 }
 
 .btn--primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
-}
-
-.btn--icon-submit {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.65rem;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  border-radius: 999px;
-  box-shadow: 0 2px 12px rgba(61, 139, 253, 0.35);
-}
-
-.btn--icon-submit:hover {
-  box-shadow: 0 4px 16px rgba(61, 139, 253, 0.45);
-}
-
-.btn--icon-submit .btn__icon {
-  display: block;
-  transition: transform 0.2s ease;
-}
-
-.btn--icon-submit:hover .btn__icon {
-  transform: translateX(2px);
+  background: #f97316;
+  border-color: #f97316;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.4);
 }
 
 .btn--ghost {
